@@ -42,6 +42,14 @@ const Review: React.FC = () => {
     });
   };
 
+  const randomPerson = () => {
+    let randomNumber = Math.floor(Math.random() * people.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber));
+  };
+
   return (
     <Article>
       <ImageContainer>
@@ -61,7 +69,7 @@ const Review: React.FC = () => {
           <FaChevronRight />
         </ReviewButton>
       </ButtonContainer>
-      <RandomButton>surprise me</RandomButton>
+      <RandomButton onClick={randomPerson}>surprise me</RandomButton>
     </Article>
   );
 };
