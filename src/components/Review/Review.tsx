@@ -18,6 +18,30 @@ const Review: React.FC = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = people[index];
 
+  const checkNumber = (number: Number) => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
+
+  const nextPerson = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
+    });
+  };
+
+  const previousPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkNumber(newIndex);
+    });
+  };
+
   return (
     <Article>
       <ImageContainer>
@@ -30,10 +54,10 @@ const Review: React.FC = () => {
       <Job>{job}</Job>
       <Info>{text}</Info>
       <ButtonContainer>
-        <ReviewButton>
+        <ReviewButton onClick={previousPerson}>
           <FaChevronLeft />
         </ReviewButton>
-        <ReviewButton>
+        <ReviewButton onClick={nextPerson}>
           <FaChevronRight />
         </ReviewButton>
       </ButtonContainer>
