@@ -15,10 +15,10 @@ import {
 } from './styles/ReviewStyle';
 
 const Review: React.FC = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
   const { name, job, image, text } = people[index];
 
-  const checkNumber = (number: Number) => {
+  const checkNumber = (number: number) => {
     if (number > people.length - 1) {
       return 0;
     }
